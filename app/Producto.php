@@ -5,16 +5,16 @@ namespace App;
 use App\Categoria;
 use App\Producto;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
+//use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Producto extends Model
 {
-    use SoftDeletes;
+    //use SoftDeletes;
 
     const PRODUCTO_DISPONIBLE = 'disponible';
     const PRODUCTO_NO_DISPONIBLE = 'no disponible';
 
-    protected $dates = ['deleted_at'];
+    //protected $dates = ['deleted_at'];
 
     protected $fillable = [
     	'nombre',

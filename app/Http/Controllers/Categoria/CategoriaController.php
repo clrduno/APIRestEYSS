@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Categoria;
 use App\Categoria;
 use App\Http\Controllers\ApiController;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Validator;
 
 class CategoriaController extends ApiController
@@ -18,21 +19,9 @@ class CategoriaController extends ApiController
     {
         $categorias = Categoria::all();
 
-        //return $this->showAll($categorias);
         return view("categorias.index", ["categorias"=>$categorias]);
     }
     
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        
-    }
-
     /**
      * Display the specified resource.
      *
@@ -75,30 +64,6 @@ class CategoriaController extends ApiController
     }
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Categoria  $categoria
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Categoria $categoria)
-    {
-        $categoria->fill($request->intersect([
-            'nombre',
-            'descripcion',
-        ]));
-
-        //determina si los valores de la instancia ha cambiado
-        if ($categoria->isClean()) {
-            return $this->errorResponse('Debe especificar al menos un valor difrente para actualizar', 422);
-        }        
-
-        $categoria->save();
-
-        return $this->showOne($categoria);
-    }
-
-    /**
      * Remove the specified resource from storage.
      *
      * @param  \App\Categoria  $categoria
@@ -106,8 +71,13 @@ class CategoriaController extends ApiController
      */
     public function destroy(Categoria $categoria)
     {
-        $categoria->delete();
+        $productos = $categoria->productos();
 
-        return $this->showOne($categoria);
+        return DB::transaction(function () use ($productos, $categoria){
+            $productos->delete(); 
+            $categoria->delete();
+
+            return $this->showOne($categoria);
+        });    
     }
 }

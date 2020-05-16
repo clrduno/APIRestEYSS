@@ -4,13 +4,13 @@ namespace App;
 
 use App\Producto;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
+//use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Categoria extends Model
 {
-    use SoftDeletes;
+    //use SoftDeletes;
 
-    protected $dates = ['deleted_at'];
+    //protected $dates = ['deleted_at'];
 
     protected $fillable = [
     	'nombre',

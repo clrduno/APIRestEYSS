@@ -22,7 +22,7 @@ class ProductosTable extends Migration
             $table->string('estatus')->default(Producto::PRODUCTO_NO_DISPONIBLE);
             $table->string('imagen');
             $table->timestamps();            
-            $table->softDeletes();
+            //$table->softDeletes();
         });
     }
 

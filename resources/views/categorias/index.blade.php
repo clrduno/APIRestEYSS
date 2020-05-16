@@ -1,7 +1,11 @@
 <div class="row"> 
     <div class="col">
-            <div class="table-responsive">
+            <div class="d-flex justify-content-center">
                 <h3>Categorías</h3>
+             </div>
+
+            <div class="table-responsive">
+                
                 <table class="table table-striped table-bordered table-hover table-sm ">
                         <thead class="thead-default">
                             <th>ID</th>

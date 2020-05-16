@@ -23,5 +23,6 @@ Route::resource('categorias', 'Categoria\CategoriaController', ['except' =>['cre
 Route::resource('categorias.productos', 'Categoria\CategoriaProductoController', ['only' =>['index']]);
 Route::post('categoriasedit', 'Categoria\CategoriaController@categoriaseditajax');
 
-//Route::resource('productos', 'Producto\ProductoController', ['only' =>['index','show']]);
-//Route::resource('productos.categorias', 'Producto\ProductoCategoriaController', ['only' =>['index', 'update', 'destroy']]);
+Route::resource('productos', 'Producto\ProductoController', ['except' =>['create','edit']]);
+Route::resource('productos.categorias', 'Producto\ProductoCategoriaController', ['only' =>['index']]);
+Route::post('productosedit', 'Producto\ProductoController@productoseditajax');

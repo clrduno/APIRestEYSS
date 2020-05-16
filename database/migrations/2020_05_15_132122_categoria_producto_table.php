@@ -17,8 +17,8 @@ class CategoriaProductoTable extends Migration
             $table->biginteger('categoria_id')->unsigned();
             $table->biginteger('producto_id')->unsigned();
 
-            $table->foreign('categoria_id')->references('id')->on('categorias');            
-            $table->foreign('producto_id')->references('id')->on('productos');   
+            $table->foreign('categoria_id')->references('id')->on('categorias')->onDelete('cascade');            
+            $table->foreign('producto_id')->references('id')->on('productos')->onDelete('cascade');   
         });
 
     }

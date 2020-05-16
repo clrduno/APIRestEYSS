@@ -17,6 +17,6 @@ Route::get('/', function () {
 */
 
 Route::get('/', 'GeneralController@index');
-
-//Route::get('/proyectodatosactividadconsulta/{id}', 'ProyectosController@getConsultadatosactividadajax');
-
+Route::get('/categorias', 'GeneralController@categorias');
+Route::get('/productos', 'GeneralController@productos');
+Route::get('/contacto', 'GeneralController@contacto');

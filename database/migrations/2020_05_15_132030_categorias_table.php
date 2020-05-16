@@ -18,7 +18,7 @@ class CategoriasTable extends Migration
              $table->string('nombre', 30);
             $table->string('descripcion', 1000);
             $table->timestamps();
-            $table->softDeletes();
+            //$table->softDeletes();
         });
     }
 
